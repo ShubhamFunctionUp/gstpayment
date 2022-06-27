@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+mongo_db:
+  container_name:db_container
+  image:mongo:latest
+  restart:always
+  volumes:-mongo_db:/data/db
+
+
+api:
+  build: .
+  ports: -3000:3000
+  environment:   
+    port:3000
+    MONGODB_URL:mongodb+srv://Shubh9638464483:bI1LiqgUI6ov0Jhb@cluster0.azzwg.mongodb.net/GSTProject?retryWrites=true&w=majority
+    DB_name:my_db
+    name:Shubham
+    depends_on:mongo_db
+
+volumes:
+  mongo_db:{}    
